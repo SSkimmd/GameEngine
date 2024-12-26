@@ -1,7 +1,6 @@
 #pragma once
 #include "scene.hpp"
 
-
 class SceneManager {
 public:
 	static SceneManager& get() {
@@ -10,20 +9,78 @@ public:
 	}
 
 	void Start() {
-		for (auto& object : currentScene->GetObjects()) {
-			object.Start();
+		for(int i = 0; i < currentScene->GetObjects().size(); i++) {
+			GameObject* object = currentScene->GetObjects()[i];
+
+			if(object) {
+				object->Start();
+			}
 		}
 	}
 
 	void Update(float deltaTime) {
-		for(auto& object : currentScene->GetObjects()) {
-			object.Update(deltaTime);
+		for(int i = 0; i < currentScene->GetObjects().size(); i++) {
+			GameObject* object = currentScene->GetObjects()[i];
+
+			if(object) {
+				object->Update(deltaTime);
+			}
 		}
 	}
 
 	void SetScene(Scene* scene) {
 		currentScene = scene;
 		Start();
+	}
+
+	void AddObjectToScene(GameObject* newObject) {
+		currentScene->AddObject(newObject);
+	}
+
+	void CreateObject() {
+		GameObject* newObject = new GameObject("C:/Users/jimmy/Desktop/COMP3016/textures/test_one.jpg");
+		newObject->SetID(currentScene->GetObjects().size());
+		newObject->SetName("Cube" + std::to_string(newObject->GetID()));
+		currentScene->AddObject(newObject);
+	}
+
+
+	void RemoveFromScene(int id) {
+		for(int i = 0; i < currentScene->GetObjects().size(); i++) {
+			GameObject* object = currentScene->GetObjects()[i];
+
+			if(object) {
+				if (object->GetID() == id) {
+					currentScene->RemoveObject(i);
+					return;
+				}
+			}
+		}
+	}
+
+	std::vector<GameObject*> GetAllObjectsInScene() {
+		return currentScene->GetObjects();
+	}
+
+	GameObject* GetObjectInScene(int id) {
+		for (int i = 0; i < currentScene->GetObjects().size(); i++) {
+			GameObject* object = currentScene->GetObjects()[i];
+			if(object) {
+				if(object->GetID() == id) {
+					return object;
+				}
+			}
+		}
+	}
+	GameObject* GetObjectInScene(std::string name) {
+		for (int i = 0; i < currentScene->GetObjects().size(); i++) {
+			GameObject* object = currentScene->GetObjects()[i];
+			if(object) {
+				if(object->GetName() == name) {
+					return object;
+				}
+			}
+		}
 	}
 
 	Scene* GetCurrentScene() {

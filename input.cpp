@@ -5,20 +5,31 @@ void InputManager::Start(GLFWwindow* window) {
 	this->window = window;
 
 	for(int i = 32; i < 349; i++) {
-		keys.emplace(i, false);
+		keysDown.emplace(i, false);
+        keysPressed.emplace(i, false);
+        keysDownLastFrame.emplace(i, false);
 	}
 }
 
 void InputManager::Update() {
 	for (int i = 32; i < 349; i++) {
-		if(glfwGetKey(window, i) == GLFW_PRESS) {
-			keys[i] = true;
-		} else {
-			keys[i] = false;
-		}
+        if (glfwGetKey(window, i) == GLFW_PRESS)
+            keysDown[i] = true;
+        else
+            keysDown[i] = false;
+
+        if (keysDown[i] && !keysDownLastFrame[i])
+            keysPressed[i] = true;
+        else
+            keysPressed[i] = false;
+        keysDownLastFrame[i] = keysDown[i];
 	}
 }
 
 bool InputManager::GetKeyDown(int key) {
-	return keys[key];
+	return keysDown[key];
+}
+
+bool InputManager::GetKeyPressed(int key) {
+    return keysPressed[key];
 }

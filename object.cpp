@@ -96,6 +96,7 @@ void GameObject::Render(Shader& shader) {
 
     glm::mat4 model = glm::mat4(1.0f);
 
+    model = glm::scale(model, scale);
     model = glm::translate(model, position);
 
     shader.setMat4("model", model);

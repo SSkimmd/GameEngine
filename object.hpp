@@ -41,12 +41,20 @@ public:
         return components;
     }
 
-    void SetPosition(glm::vec3 newPosition) {
-        position = newPosition;
+    void SetPosition(glm::vec3 position) {
+        this->position = position;
     }
 
     glm::vec3 GetPosition() {
         return position;
+    }
+
+    glm::vec3 GetScale() {
+        return scale;
+    }
+
+    void SetScale(glm::vec3 scale) {
+        this->scale = scale;
     }
 
     bool SetHidden(bool hidden) {
@@ -82,7 +90,10 @@ public:
     }
 private:
     std::vector<Component*> components;
+    
     glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
+
     std::string name = "blank";
     bool hidden = false;
     unsigned int ID = 0;

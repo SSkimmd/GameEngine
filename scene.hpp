@@ -12,14 +12,22 @@ public:
         return name;
     }
 
-    GameObject &GetObject(int i) {
+    void AddObject(GameObject* newObject) {
+        objects.push_back(newObject);
+    }
+
+    void RemoveObject(int id) {
+        objects.erase(objects.begin() + id);
+    }
+
+    GameObject* GetObject(int i) {
         return objects[i];
     }
 
-    std::vector<GameObject> &GetObjects() {
+    std::vector<GameObject*> GetObjects() {
         return objects;
     }
 private:
-    std::vector<GameObject> objects {};
+    std::vector<GameObject*> objects {};
     std::string name = "";
 };

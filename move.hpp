@@ -10,26 +10,32 @@ public:
 		this->id = id;
 	}
 	void Start() {
-
+		std::cout << "start called in move component" << std::endl;
 	}
 	void Update(float deltaTime) {
-		glm::vec3 currentPos = SceneManager::get().GetCurrentScene()->GetObject(id).GetPosition();
-		if (right) {
-			if (currentPos.x < 5) {
-				currentPos.x += speed * deltaTime;
-				SceneManager::get().GetCurrentScene()->GetObject(id).SetPosition(currentPos);
-			}
-			else {
-				right = false;
-			}
+		if (InputManager::get().GetKeyPressed(GLFW_KEY_P)) {
+			paused = !paused;
 		}
-		else {
-			if (currentPos.x > -5) {
-				currentPos.x -= speed * deltaTime;
-				SceneManager::get().GetCurrentScene()->GetObject(id).SetPosition(currentPos);
+
+		if (!paused) {
+			glm::vec3 currentPos = SceneManager::get().GetObjectInScene(id)->GetPosition();
+			if (right) {
+				if (currentPos.x < 5) {
+					currentPos.x += speed * deltaTime;
+					SceneManager::get().GetObjectInScene(id)->SetPosition(currentPos);
+				}
+				else {
+					right = false;
+				}
 			}
 			else {
-				right = true;
+				if (currentPos.x > -5) {
+					currentPos.x -= speed * deltaTime;
+					SceneManager::get().GetObjectInScene(id)->SetPosition(currentPos);
+				}
+				else {
+					right = true;
+				}
 			}
 		}
 	}
@@ -37,4 +43,5 @@ private:
 	int speed = 1;
 	bool right = true;
 	int id = -1;
+	bool paused = false;
 };

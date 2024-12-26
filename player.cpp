@@ -10,14 +10,15 @@ void Player::SetSpeed(float speed) {
 }
 
 void Player::Update(float deltaTime) {
+
+	glm::vec3 currentPos = SceneManager::get().GetObjectInScene("player")->GetPosition();
+
 	if(InputManager::get().GetKeyDown(GLFW_KEY_D)) {
-		glm::vec3 currentPos = SceneManager::get().GetCurrentScene()->GetObject(0).GetPosition();
-		SceneManager::get().GetCurrentScene()->GetObject(0)
-			.SetPosition(glm::vec3(currentPos.x + speed * deltaTime, currentPos.y, currentPos.z));
+		SceneManager::get().GetObjectInScene("player")
+			->SetPosition(glm::vec3(currentPos.x + speed * deltaTime, currentPos.y, currentPos.z));
 	}
 	if(InputManager::get().GetKeyDown(GLFW_KEY_A)) {
-		glm::vec3 currentPos = SceneManager::get().GetCurrentScene()->GetObject(0).GetPosition();
-		SceneManager::get().GetCurrentScene()->GetObject(0)
-			.SetPosition(glm::vec3(currentPos.x - speed * deltaTime, currentPos.y, currentPos.z));
+		SceneManager::get().GetObjectInScene("player")
+			->SetPosition(glm::vec3(currentPos.x - speed * deltaTime, currentPos.y, currentPos.z));
 	}
 }

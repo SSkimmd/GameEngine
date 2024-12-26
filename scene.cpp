@@ -9,31 +9,28 @@ Scene::Scene() {
 bool Scene::Load(std::string name) {
     this->name = name;
 
-    GameObject cube1 = GameObject("C:/Users/jimmy/Desktop/COMP3016/textures/test_one.jpg");
-    cube1.AddComponent(new Player());
+    GameObject* player = new GameObject("C:/Users/jimmy/Desktop/COMP3016/textures/test_one.jpg");
+    player->AddComponent(new Player());
 
-    cube1.SetID(0);
-    cube1.SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-    std::string cube1_name = "Cube" + std::to_string(cube1.GetID());
-    cube1.SetName(cube1_name);
-    objects.push_back(cube1);
+    player->SetID(0);
+    player->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+    player->SetScale(glm::vec3(1.0f, 1.0f, 1.0f));
+    player->SetName("player");
+    objects.push_back(player);
 
 
+    for (int i = 0; i < 1; i++) {
+        GameObject* cube = new GameObject("C:/Users/jimmy/Desktop/COMP3016/textures/test_two.jpg");
 
-    for (int i = 0; i < 2; i++) {
-        GameObject cube = GameObject("C:/Users/jimmy/Desktop/COMP3016/textures/test_two.jpg");
-
-        cube.AddComponent(new Move());
-        Move* move = cube.GetComponent<Move>(0);
+        cube->AddComponent(new Move());
+        Move* move = cube->GetComponent<Move>(0);
         move->SetID(i + 1);
 
-        cube.SetID(i+1);
-        cube.SetPosition(glm::vec3((float)i + 1, 0.0f, 0.0f));
-        std::string cube_name = "Cube" + std::to_string(cube.GetID());
-        cube.SetName(cube_name);
-        objects.push_back(cube);
+        cube->SetID(i+1);
+        cube->SetPosition(glm::vec3((float)i + 1, 0.0f, 0.0f));
+        cube->SetName("Cube" + std::to_string(cube->GetID()));
+        AddObject(cube);
     }
-
 
     /*
     GameObject cube3 = GameObject("C:/Users/jimmy/Desktop/COMP3016/textures/test_three.jpg");

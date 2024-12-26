@@ -12,4 +12,5 @@ public:
 private:
 	ImGuiIO* io;
 	float x_pos = 0.0f, y_pos = 0.0f, z_pos = 0.0f;
+	float x_scale = 0.0f, y_scale = 0.0f, z_scale = 0.0f;
 };

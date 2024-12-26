@@ -18,10 +18,10 @@ void Renderer::Render(Scene* scene) {
     shader.setMat4("view", view);
 
     for(int i = 0; i < scene->GetObjects().size(); i++) {
-        auto& obj = scene->GetObject(i);
+        auto* obj = scene->GetObject(i);
 
-        if(obj.IsHidden()) continue;
+        if(obj->IsHidden()) continue;
 
-        obj.Render(shader);
+        obj->Render(shader);
     }
 }
