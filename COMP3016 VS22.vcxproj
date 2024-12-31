@@ -106,9 +106,18 @@
       <AdditionalDependencies>glfw3.lib;opengl32.lib;imgui.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;imgui.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="application.cpp" />
-    <ClCompile Include="player.cpp" />
+    <ClCompile Include="game.cpp" />
     <ClCompile Include="player.hpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="input.cpp" />
@@ -122,11 +131,13 @@
   <ItemGroup>
     <ClInclude Include="application.hpp" />
     <ClInclude Include="component.hpp" />
+    <ClInclude Include="game.hpp" />
     <ClInclude Include="input.hpp" />
     <ClInclude Include="interface.hpp" />
     <ClInclude Include="move.hpp" />
     <ClInclude Include="object.hpp" />
     <ClInclude Include="renderer.hpp" />
+    <ClInclude Include="rotate.hpp" />
     <ClInclude Include="scene.hpp" />
     <ClInclude Include="scenes.hpp" />
     <ClInclude Include="shader.hpp" />

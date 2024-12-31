@@ -57,6 +57,14 @@ public:
         this->scale = scale;
     }
 
+    glm::vec3 GetRotation() {
+        return rotation;
+    }
+
+    void SetRotation(glm::vec3 rotation) {
+        this->rotation = rotation;
+    }
+
     bool SetHidden(bool hidden) {
         this->hidden = hidden;
         return this->hidden;
@@ -93,6 +101,7 @@ private:
     
     glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
+    glm::vec3 rotation = glm::vec3(0.0f, 0.0f, 0.0f);
 
     std::string name = "blank";
     bool hidden = false;

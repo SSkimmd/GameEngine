@@ -35,6 +35,10 @@ public:
 
 	void AddObjectToScene(GameObject* newObject) {
 		currentScene->AddObject(newObject);
+		std::vector<Component*> components = newObject->GetAllComponents();
+		for(int i = 0; i < components.size(); i++) {
+			components[i]->Start();
+		}
 	}
 
 	void CreateObject() {
@@ -71,6 +75,8 @@ public:
 				}
 			}
 		}
+
+		return nullptr;
 	}
 	GameObject* GetObjectInScene(std::string name) {
 		for (int i = 0; i < currentScene->GetObjects().size(); i++) {
@@ -81,6 +87,8 @@ public:
 				}
 			}
 		}
+
+		return nullptr;
 	}
 
 	Scene* GetCurrentScene() {
@@ -88,7 +96,7 @@ public:
 	}
 
 	~SceneManager() = default;
+	SceneManager() = default;
 private:
-	SceneManager() {};
 	Scene* currentScene = new Scene();
 };

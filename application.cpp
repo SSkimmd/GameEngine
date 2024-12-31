@@ -9,6 +9,7 @@ Application::Application(int SCR_WIDTH, int SCR_HEIGHT) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
 
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL Game", NULL, NULL);
@@ -39,9 +40,16 @@ Application::Application(int SCR_WIDTH, int SCR_HEIGHT) {
     UserInterface userInterface = UserInterface(window);
     InputManager::get().Start(window);
 
+    Game* game = new Game();
+    game->Start();
+
     float deltaTime = 0.0f;
     float lastFrame = 0.0f;
+    int width, height;
     while(!glfwWindowShouldClose(window)) {
+        glfwGetWindowSize(window, &width, &height);
+        renderer.SetSize(width, height);
+
         glfwPollEvents();
 
         InputManager::get().Update();

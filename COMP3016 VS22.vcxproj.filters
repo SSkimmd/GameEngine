@@ -19,9 +19,6 @@
     <Filter Include="Header Files\ecs\components">
       <UniqueIdentifier>{b3f3a06f-1952-4456-8051-db261cba9f8d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\components">
-      <UniqueIdentifier>{49fac506-64a6-4fb6-b56a-7c8c2c83045e}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="application.cpp">
@@ -54,8 +51,8 @@
     <ClCompile Include="player.hpp">
       <Filter>Header Files\ecs\components</Filter>
     </ClCompile>
-    <ClCompile Include="player.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="move.hpp">
       <Filter>Header Files\ecs\components</Filter>
+    </ClInclude>
+    <ClInclude Include="rotate.hpp">
+      <Filter>Header Files\ecs\components</Filter>
+    </ClInclude>
+    <ClInclude Include="game.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

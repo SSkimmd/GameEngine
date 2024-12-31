@@ -4,25 +4,24 @@
 
 
 
-class Move : virtual public Component {
+class Move : public Component {
 public:
-	void SetID(int id) {
-		this->id = id;
+	Move(GameObject* object) {
+		this->object = object;
 	}
-	void Start() {
-		std::cout << "start called in move component" << std::endl;
-	}
-	void Update(float deltaTime) {
+	~Move() = default;
+	void Start() override { }
+	void Update(float deltaTime) override {
 		if (InputManager::get().GetKeyPressed(GLFW_KEY_P)) {
 			paused = !paused;
 		}
 
 		if (!paused) {
-			glm::vec3 currentPos = SceneManager::get().GetObjectInScene(id)->GetPosition();
+			glm::vec3 currentPos = object->GetPosition();
 			if (right) {
 				if (currentPos.x < 5) {
 					currentPos.x += speed * deltaTime;
-					SceneManager::get().GetObjectInScene(id)->SetPosition(currentPos);
+					object->SetPosition(currentPos);
 				}
 				else {
 					right = false;
@@ -31,7 +30,7 @@ public:
 			else {
 				if (currentPos.x > -5) {
 					currentPos.x -= speed * deltaTime;
-					SceneManager::get().GetObjectInScene(id)->SetPosition(currentPos);
+					object->SetPosition(currentPos);
 				}
 				else {
 					right = true;
@@ -42,6 +41,6 @@ public:
 private:
 	int speed = 1;
 	bool right = true;
-	int id = -1;
 	bool paused = false;
+	GameObject* object;
 };

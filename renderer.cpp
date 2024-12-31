@@ -10,7 +10,6 @@ void Renderer::Render(Scene* scene) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 
     shader.use();
-
     glm::mat4 projection = glm::perspective(glm::radians(80.0f), (float)screen_width / (float)screen_height, 0.1f, 100.0f);
     shader.setMat4("projection", projection);
 

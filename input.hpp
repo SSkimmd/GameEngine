@@ -8,7 +8,6 @@ public:
 		static InputManager manager;
 		return manager;
 	}
-	~InputManager() = default;
 
 	void Start(GLFWwindow* window);
 	void Update();
@@ -19,5 +18,6 @@ private:
 	std::map<int, bool> keysPressed;
 	std::map<int, bool> keysDownLastFrame;
 	GLFWwindow* window;
-	InputManager() {}
+	InputManager() = default;
+	~InputManager() = default;
 };

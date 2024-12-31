@@ -13,6 +13,7 @@ public:
     }
 
     void AddObject(GameObject* newObject) {
+        newObject->SetID(objects.size());
         objects.push_back(newObject);
     }
 

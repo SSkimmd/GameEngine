@@ -17,13 +17,12 @@ void UserInterface::Render() {
     ImGui::NewFrame();
     ImGui::Begin("Debug");
 
-    ImGui::Text(SceneManager::get().GetCurrentScene()->GetName().c_str());
     Scene* scene = SceneManager::get().GetCurrentScene();
+    ImGui::Text(scene->GetName().c_str());
     int objects = std::size(scene->GetObjects());
     std::string object_text = "Objects: " + std::to_string(objects);
     ImGui::Text(object_text.c_str());
     ImGui::Text("%.3f ms/frame (%.1f FPS)", 1000.0f / io->Framerate, io->Framerate);
-
     if(ImGui::CollapsingHeader("Objects")) {
         ImGui::Indent();
 
@@ -79,10 +78,14 @@ void UserInterface::Render() {
         }
         ImGui::Unindent();
     }
-    if(ImGui::CollapsingHeader("Scene")) {
+    if(ImGui::CollapsingHeader("Controls")) {
         if(ImGui::Button("Create New Object")) {
             SceneManager::get().CreateObject();
         }
+
+        /*
+        std::string input_label = "Texture";
+        ImGui::InputText(input_label.c_str(), &texture_name, 128);*/
     }
 
     ImGui::End();

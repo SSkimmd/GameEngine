@@ -6,7 +6,7 @@
 #include "interface.hpp"
 #include "scenes.hpp"
 #include "input.hpp"
-#include "move.hpp"
+#include "game.hpp"
 
 class Application {
 public:

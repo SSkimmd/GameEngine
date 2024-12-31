@@ -79,14 +79,18 @@ GameObject::GameObject(std::string textureFile) {
 }
 
 void GameObject::Start() {
-    for(auto& component : components) {
-        component->Start();
+    for (int i = 0; i < components.size(); i++) {
+        if (components[i]) {
+            components[i]->Start();
+        }
     }
 }
 
 void GameObject::Update(float deltaTime) {
-    for(auto& component : components) {
-        component->Update(deltaTime);
+    for (int i = 0; i < components.size(); i++) {
+        if(components[i]) {
+            components[i]->Update(deltaTime);
+        }
     }
 }
 
@@ -98,6 +102,8 @@ void GameObject::Render(Shader& shader) {
 
     model = glm::scale(model, scale);
     model = glm::translate(model, position);
+    model = glm::rotate(model, rotation.x, glm::vec3(-1.0f, 0.0f, 0.0f));
+    model = glm::rotate(model, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
 
     shader.setMat4("model", model);
 
