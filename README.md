@@ -34,12 +34,19 @@ Application Diagram \
 
 # Scene Manager
 The scene manager is used to control the current scene throughout the application. It contains all functions related to adding, removing, retrieving and updating GameObjects.
-
+```
+SceneManager::get()
+```
 
 # Input Manager
 The input manager allows access the keyboard controls. 
 This class is built to be expandable in the future utilising as much of the GLFW input library as possible, 
 this is to be able to implement more input types, such as controllers or touchscreen, in the future.
+```
+InputManager::get().GetKeyPressed();
+InputManager::get().GetKeyDown();
+```
+
 
 Currently, two different types of input are monitored:
 - Key Down, which checks if the key is currently down.
@@ -80,11 +87,18 @@ Child* child = GetComponent<Child>();
 
 In the application there are 3 example components: 
 - Player, this component allows the player to control the player GameObject using the keyboard through the InputManager. 
+
 - Rotate, this will rotate the object selected. 
 - Move, this will move the selected object.
 
 These example components are used to show how the system works and how they can be combined on the same object.
 
+### An example object
+```
+GameObject* object = new GameObject("texture_path");
+object.AddComponent(new Player());
+Player* player = object.GetComponent<Player>(0);
+```
 
 # Evaluation
 Overall i feel the project was overscoped in the initial documents.

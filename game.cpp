@@ -21,6 +21,7 @@ void Game::Start() {
     GameObject* cube = new GameObject("textures/test_two.jpg");
     cube->AddComponent(new Rotate(cube));
     cube->AddComponent(new Move(cube));
+
     cube->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
     cube->SetScale(glm::vec3(1.0f, 1.0f, 1.0f));
     cube->SetName("cube");
