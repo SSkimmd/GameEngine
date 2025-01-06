@@ -50,18 +50,17 @@ Application::Application(int SCR_WIDTH, int SCR_HEIGHT) {
         glfwGetWindowSize(window, &width, &height);
         renderer.SetSize(width, height);
 
-        glfwPollEvents();
-
-        InputManager::get().Update();
-        SceneManager::get().Update(deltaTime);
-
         float currentFrame = static_cast<float>(glfwGetTime());
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
+        InputManager::get().Update();
+        SceneManager::get().Update(deltaTime);
+
         renderer.Render(SceneManager::get().GetCurrentScene());
         userInterface.Render();
 
+        glfwPollEvents();
         glfwSwapBuffers(window);
     }
 

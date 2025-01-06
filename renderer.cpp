@@ -2,7 +2,7 @@
 
 Renderer::Renderer(int screen_width, int screen_height) {
     SetSize(screen_width, screen_height);
-    shader = Shader("C:/Users/jimmy/Desktop/COMP3016/shaders/sprite.vs", "C:/Users/jimmy/Desktop/COMP3016/shaders/sprite.fs");
+    shader = Shader("C:/Users/jimmy/Desktop/GameEngine/GameEngine/shaders/sprite.vs", "C:/Users/jimmy/Desktop/GameEngine/GameEngine/shaders/sprite.fs");
 }
 
 void Renderer::Render(Scene* scene) {

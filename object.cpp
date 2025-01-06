@@ -78,22 +78,6 @@ GameObject::GameObject(std::string textureFile) {
     stbi_image_free(data);
 }
 
-void GameObject::Start() {
-    for (int i = 0; i < components.size(); i++) {
-        if (components[i]) {
-            components[i]->Start();
-        }
-    }
-}
-
-void GameObject::Update(float deltaTime) {
-    for (int i = 0; i < components.size(); i++) {
-        if(components[i]) {
-            components[i]->Update(deltaTime);
-        }
-    }
-}
-
 void GameObject::Render(Shader& shader) {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture);

@@ -10,7 +10,7 @@ Game::~Game() {
 
 
 void Game::Start() {    
-    GameObject* player = new GameObject("C:/Users/jimmy/Desktop/COMP3016/textures/test_one.jpg");
+    GameObject* player = new GameObject("textures/test_one.jpg");
     player->AddComponent(new Player());
     player->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
     player->SetScale(glm::vec3(1.0f, 1.0f, 1.0f));
@@ -18,7 +18,7 @@ void Game::Start() {
     SceneManager::get().AddObjectToScene(player);
 
 
-    GameObject* cube = new GameObject("C:/Users/jimmy/Desktop/COMP3016/textures/test_two.jpg");
+    GameObject* cube = new GameObject("textures/test_two.jpg");
     cube->AddComponent(new Rotate(cube));
     cube->AddComponent(new Move(cube));
     cube->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));

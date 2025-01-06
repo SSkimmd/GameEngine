@@ -42,7 +42,7 @@ public:
 	}
 
 	void CreateObject() {
-		GameObject* newObject = new GameObject("C:/Users/jimmy/Desktop/COMP3016/textures/test_one.jpg");
+		GameObject* newObject = new GameObject("textures/test_one.jpg");
 		newObject->SetID(currentScene->GetObjects().size());
 		newObject->SetName("Cube" + std::to_string(newObject->GetID()));
 		currentScene->AddObject(newObject);

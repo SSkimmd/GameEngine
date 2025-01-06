@@ -17,8 +17,21 @@ public:
     ~GameObject() = default;
 
     void Render(Shader& shader);
-    void Update(float deltaTime);
-    void Start();
+    void GameObject::Start() {
+        for (int i = 0; i < components.size(); i++) {
+            if (components[i]) {
+                components[i]->Start();
+            }
+        }
+    }
+
+    void GameObject::Update(float deltaTime) {
+        for (int i = 0; i < components.size(); i++) {
+            if (components[i]) {
+                components[i]->Update(deltaTime);
+            }
+        }
+    }
 
     template <class T>
     T* GetComponent(int id) {
