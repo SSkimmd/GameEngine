@@ -13,6 +13,7 @@ Open the visual studio solution and select build. include and lib folder should 
 - GLM
 - ASSIMP
 - Dear ImGui
+- GLAD
 
 # Application Examples
 In Application
