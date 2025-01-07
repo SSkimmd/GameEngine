@@ -14,7 +14,7 @@ Open the visual studio solution and select build. include and lib folder should 
 - ASSIMP
 - Dear ImGui
 
-# Gameplay Examples
+# Application Examples
 In Application
 ![In Application](screenshots/application.png)
 
