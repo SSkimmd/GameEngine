@@ -82,7 +82,7 @@ To solve this, templates were used to specify the class of the component it will
 
 This allows the developer to access all variables and functions of the child type.  
 
-```
+```c++
 Child* child = GetComponent<Child>();
 ```
 
@@ -95,7 +95,7 @@ In the application there are 3 example components:
 These example components are used to show how the system works and how they can be combined on the same object.
 
 ### An example object
-```
+```c++
 GameObject* object = new GameObject("texture_path");
 object.AddComponent(new Player());
 Player* player = object.GetComponent<Player>(0);
