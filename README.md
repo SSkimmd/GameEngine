@@ -35,7 +35,7 @@ Application Diagram \
 
 # Scene Manager
 The scene manager is used to control the current scene throughout the application. It contains all functions related to adding, removing, retrieving and updating GameObjects.
-```
+```c++
 SceneManager::get()
 ```
 
@@ -43,7 +43,7 @@ SceneManager::get()
 The input manager allows access the keyboard controls. 
 This class is built to be expandable in the future utilising as much of the GLFW input library as possible, 
 this is to be able to implement more input types, such as controllers or touchscreen, in the future.
-```
+```c++
 InputManager::get().GetKeyPressed();
 InputManager::get().GetKeyDown();
 ```
